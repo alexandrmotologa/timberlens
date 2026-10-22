@@ -13,19 +13,21 @@ import (
 
 // Server provides the HTTP API and SSE broker.
 type Server struct {
-	ring     *buffer.RingBuffer
-	broker   *SSEBroker
-	clusters *cluster.SignatureTracker
-	mux      *http.ServeMux
+	ring      *buffer.RingBuffer
+	broker    *SSEBroker
+	clusters  *cluster.SignatureTracker
+	histogram *buffer.TimeHistogram
+	mux       *http.ServeMux
 }
 
 // NewServer creates a new API server instance.
-func NewServer(ring *buffer.RingBuffer, broker *SSEBroker, clusters *cluster.SignatureTracker) *Server {
+func NewServer(ring *buffer.RingBuffer, broker *SSEBroker, clusters *cluster.SignatureTracker, histogram *buffer.TimeHistogram) *Server {
 	s := &Server{
-		ring:     ring,
-		broker:   broker,
-		clusters: clusters,
-		mux:      http.NewServeMux(),
+		ring:      ring,
+		broker:    broker,
+		clusters:  clusters,
+		histogram: histogram,
+		mux:       http.NewServeMux(),
 	}
 	s.registerRoutes()
 	return s
@@ -38,6 +40,17 @@ func (s *Server) registerRoutes() {
 	s.mux.HandleFunc("/api/services", s.handleServices)
 	s.mux.HandleFunc("/api/traces/", s.handleTraceByID)
 	s.mux.HandleFunc("/api/clusters", s.handleClusters)
+	s.mux.HandleFunc("/api/histogram", s.handleHistogram)
+}
+
+func (s *Server) handleHistogram(w http.ResponseWriter, r *http.Request) {
+	enableCORS(w)
+	if s.histogram == nil {
+		writeJSON(w, http.StatusOK, []any{})
+		return
+	}
+	buckets := s.histogram.RecentBuckets()
+	writeJSON(w, http.StatusOK, buckets)
 }
 
 func (s *Server) Handler() http.Handler {

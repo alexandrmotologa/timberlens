@@ -219,3 +219,40 @@ timberlens/
 - [x] Subtask 11.1: Capture authentic screenshots of both the Terminal TUI and the React 19 Web Studio in action.
 - [x] Subtask 11.2: Generate animated demo GIF (`docs/images/timberlens_demo.gif`) and embed into `README.md`.
 - [x] Subtask 11.3: Execute `mtlg-portfolio-sync` Phase 2 (copy visual assets, update `project_images_map.json`, update `projects.json` to LIVE, recompile portfolios, preview and broadcast to X).
+
+---
+
+## 4. Phase 2: Advanced Usability & Productivity Roadmap (10 Features)
+
+### Task 12: Custom Regex Parser & HTTP cURL Generator
+- [x] Subtask 12.1: Implement named-group regex parser in `internal/parser/regex.go` supporting `--format-regex`.
+- [x] Subtask 12.2: Implement HTTP request attribute detection and cURL command synthesis in `internal/model/curl.go`.
+- [x] Subtask 12.3: Unit tests for custom regex parsing and cURL synthesis.
+
+### Task 13: Time-Series Velocity & Anomaly Histogram
+- [x] Subtask 13.1: Implement rolling time-bucketed aggregation in `internal/buffer/histogram.go` (60 buckets for total, info, warn, error).
+- [x] Subtask 13.2: Expose `/api/histogram` endpoint in `internal/server/api.go`.
+- [x] Subtask 13.3: Unit tests verifying bucket rotation and error spike tracking.
+
+### Task 14: Terminal TUI Split-View, Vim Navigation & Mouse Support
+- [x] Subtask 14.1: Implement side-by-side Split View in `internal/tui/app.go` (`v` / `Tab` toggles live stream on left, live inspector on right).
+- [x] Subtask 14.2: Implement Vim-style search navigation (`n` next match, `N` previous match).
+- [x] Subtask 14.3: Add mouse support (`tea.WithMouseCellMotion()`) for wheel scrolling and row click selection.
+- [x] Subtask 14.4: Add `c` shortcut to copy cURL replay command.
+
+### Task 15: React 19 Web Studio Usability Suite
+- [x] Subtask 15.1: Build `VelocityHistogram.tsx` component in Header with interactive stacked bars and zoom filter.
+- [x] Subtask 15.2: Build 1-click "Copy as cURL" button in `LogDetailModal.tsx` and row actions.
+- [x] Subtask 15.3: Build `TraceCompareModal.tsx` for side-by-side diffing of two traces.
+- [x] Subtask 15.4: Build `SnapshotExporter.ts` generating a self-contained, offline interactive HTML report.
+- [x] Subtask 15.5: Build `AlertManager.tsx` with Web Audio procedural synthesizer chimes + Notification API.
+- [x] Subtask 15.6: Build `ColumnPicker.tsx` allowing customizable visible columns in the log stream table.
+- [x] Subtask 15.7: Build dynamic keyword and regex text highlighting in log messages.
+
+### Task 16: Verification, Visual Assets & Portfolio Re-Sync
+- [x] Subtask 16.1: Run all unit and benchmark tests across Go and Web.
+- [x] Subtask 16.2: Rebuild embedded production bundle into `bin/timberlens.exe`.
+- [x] Subtask 16.3: Capture updated screenshots showcasing Split View TUI, Velocity Histogram, Trace Compare, and Snapshot Exporter.
+- [x] Subtask 16.4: Regenerate demo GIF and update documentation.
+- [x] Subtask 16.5: Sync portfolio sites and commit to GitHub.
+

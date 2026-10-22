@@ -16,12 +16,16 @@ docker compose logs -f | timberlens
 
 - **Piped STDIN ingestion**: Consumes raw log streams with zero configuration at over 120,000 lines per second.
 - **Format auto-detection**: Recognizes JSON Lines (Pino, Zap, Winston, Go slog, Python structlog), logfmt (`key=value`), and syslog formats without flags.
+- **Custom regex parser**: Parses proprietary unstructured log lines into typed fields using `--format-regex` with named capture groups.
 - **Low-memory circular buffer**: Pre-allocated ring buffer holding up to 1,000,000 log events in memory under 25MB RAM.
 - **Vendor stack trace folding**: Automatically identifies and collapses `node_modules`, `site-packages`, and runtime library frames, highlighting user application code.
+- **Traffic velocity histogram**: Real-time rolling 60-second throughput visualization with automated error anomaly detection.
 - **Field query engine**: Filters logs with expressions such as `service:api`, `level:error`, `latency_ms>500`, and full-text regex.
-- **Trace ID correlation**: Groups and links distributed logs sharing the same `trace_id` across distinct microservices.
-- **Dual interface**: Charm Bubble Tea terminal TUI for quick terminal inspections and an embedded React 19 Web Studio for visual exploration.
-- **Single binary**: The Web Studio frontend compiles directly into the Go binary using `embed`.
+- **Replay cURL generator**: Extracts HTTP methods, endpoints, headers, and payloads to generate ready-to-run terminal cURL commands.
+- **Distributed trace waterfall & diff**: Groups logs sharing a `trace_id` and enables side-by-side execution diffing between any two traces.
+- **Standalone HTML snapshot**: Exports self-contained offline reports with embedded search and stack trace folding without external CDNs.
+- **Audio & desktop notifications**: Procedural Web Audio API error chimes and native background desktop alerts.
+- **Dual interface**: Charm Bubble Tea terminal TUI (with Split View, Vim keys, and mouse wheel support) and an embedded React 19 Web Studio.
 
 ---
 
@@ -152,12 +156,15 @@ TimberLens provides a fast search syntax for filtering high-volume logs:
 |---|---|
 | `/` | Focus search and query input |
 | `Esc` | Clear search focus or dismiss modal |
+| `v` / `Tab` | Toggle side-by-side Split View (stream on left, JSON inspector on right) |
 | `f` | Toggle auto-follow (tail stream) |
 | `p` | Pause or resume ingestion stream |
-| `c` | Clear current screen buffer |
+| `n` / `N` | Navigate to next / previous search match in log history |
+| `c` | Copy cURL command of selected HTTP record to clipboard |
 | `Enter` | Inspect selected log line in full structured JSON viewer |
 | `e` | Expand or fold vendor stack trace frames |
 | `1` - `9` | Filter stream by active microservice |
+| `Mouse Wheel` | Scroll log viewport |
 | `q` / `Ctrl+C` | Exit application |
 
 ---

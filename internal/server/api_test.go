@@ -16,7 +16,8 @@ func TestAPIRoutes(t *testing.T) {
 	ring := buffer.NewRingBuffer(100)
 	broker := NewSSEBroker()
 	clusters := cluster.NewSignatureTracker(100)
-	srv := NewServer(ring, broker, clusters)
+	histogram := buffer.NewTimeHistogram(1, 60)
+	srv := NewServer(ring, broker, clusters, histogram)
 
 	// Ingest sample records
 	rec1 := &model.LogRecord{

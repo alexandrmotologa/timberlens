@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { LogRecord } from '../types/log';
+import { alertManager } from '../utils/alerts';
 
 interface UseLogStreamOptions {
   query: string;
@@ -60,6 +61,9 @@ export function useLogStream({ query, maxBuffer = 1000 }: UseLogStreamOptions) {
 
       try {
         const record: LogRecord = JSON.parse(event.data);
+        if (record.levelStr === 'ERROR' || record.levelStr === 'FATAL') {
+          alertManager.triggerErrorAlert(record.service, record.message || record.raw);
+        }
         setLogs((prev) => {
           const next = [...prev, record];
           if (next.length > maxBuffer) {

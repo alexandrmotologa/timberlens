@@ -54,3 +54,40 @@ export interface SystemStats {
   services: Record<string, number>;
   levels: Record<string, number>;
 }
+
+export interface HistogramBucket {
+  timestamp: number; // Unix timestamp in seconds
+  total: number;
+  info: number;
+  warn: number;
+  error: number;
+}
+
+export interface ColumnVisibility {
+  timestamp: boolean;
+  level: boolean;
+  service: boolean;
+  traceId: boolean;
+  latency: boolean;
+  message: boolean;
+}
+
+export interface TraceComparisonResult {
+  traceA: {
+    traceId: string;
+    records: LogRecord[];
+    durationMs: number;
+    services: string[];
+    errorCount: number;
+  };
+  traceB: {
+    traceId: string;
+    records: LogRecord[];
+    durationMs: number;
+    services: string[];
+    errorCount: number;
+  };
+  durationDeltaMs: number;
+  durationPercentDiff: number;
+}
+

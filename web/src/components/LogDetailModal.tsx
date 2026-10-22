@@ -1,26 +1,32 @@
 import React, { useState } from 'react';
-import { X, Copy, Check, Terminal, Code2, AlertTriangle, Eye, EyeOff } from 'lucide-react';
+import { X, Copy, Check, Terminal, Code2, AlertTriangle, Eye, EyeOff, Play, GitCompare } from 'lucide-react';
 import { LogRecord } from '../types/log';
 import { getServiceColor, getLevelBadge } from '../utils/colors';
 import { formatFullDate } from '../utils/format';
+import { generateCurlCommand } from '../utils/curl';
 
 interface LogDetailModalProps {
   log: LogRecord | null;
   onClose: () => void;
   onSelectTrace: (traceId: string) => void;
+  onCompareTrace?: (traceId: string) => void;
 }
 
 export const LogDetailModal: React.FC<LogDetailModalProps> = ({
   log,
   onClose,
   onSelectTrace,
+  onCompareTrace,
 }) => {
   const [copied, setCopied] = useState(false);
   const [copiedRaw, setCopiedRaw] = useState(false);
+  const [copiedCurl, setCopiedCurl] = useState(false);
   const [expandStack, setExpandStack] = useState(false);
-  const [activeTab, setActiveTab] = useState<'structured' | 'raw'>('structured');
+  const [activeTab, setActiveTab] = useState<'structured' | 'raw' | 'curl'>('structured');
 
   if (!log) return null;
+
+  const curlCommand = generateCurlCommand(log);
 
   const handleCopyJSON = () => {
     navigator.clipboard.writeText(JSON.stringify(log.fields || log, null, 2));
@@ -32,6 +38,13 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
     navigator.clipboard.writeText(log.raw);
     setCopiedRaw(true);
     setTimeout(() => setCopiedRaw(false), 2000);
+  };
+
+  const handleCopyCurl = () => {
+    if (!curlCommand) return;
+    navigator.clipboard.writeText(curlCommand);
+    setCopiedCurl(true);
+    setTimeout(() => setCopiedCurl(false), 2000);
   };
 
   const svcColor = getServiceColor(log.service);
@@ -57,6 +70,17 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
           </div>
 
           <div className="flex items-center space-x-2">
+            {curlCommand && (
+              <button
+                onClick={handleCopyCurl}
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 hover:text-indigo-100 text-xs font-medium border border-indigo-500/30 transition-colors"
+                title="Copy ready-to-run cURL command"
+              >
+                {copiedCurl ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Play className="w-3.5 h-3.5" />}
+                <span>{copiedCurl ? 'Copied cURL' : 'Copy cURL'}</span>
+              </button>
+            )}
+
             <button
               onClick={handleCopyJSON}
               className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
@@ -86,7 +110,7 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
 
           {/* Trace Context if available */}
           {log.traceId && (
-            <div className="flex items-center justify-between p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">
+            <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">
               <div className="flex items-center space-x-3">
                 <span className="text-slate-400">Trace ID:</span>
                 <span className="font-bold">{log.traceId}</span>
@@ -99,15 +123,30 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
                 )}
               </div>
 
-              <button
-                onClick={() => {
-                  onSelectTrace(log.traceId!);
-                  onClose();
-                }}
-                className="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-[11px] transition-colors"
-              >
-                Inspect Waterfall Flow
-              </button>
+              <div className="flex items-center space-x-2">
+                {onCompareTrace && (
+                  <button
+                    onClick={() => {
+                      onCompareTrace(log.traceId!);
+                      onClose();
+                    }}
+                    className="flex items-center space-x-1 px-2.5 py-1 rounded bg-surface border border-indigo-500/30 hover:bg-indigo-500/20 text-indigo-300 font-medium text-[11px] transition-colors"
+                  >
+                    <GitCompare className="w-3 h-3" />
+                    <span>Compare Trace</span>
+                  </button>
+                )}
+
+                <button
+                  onClick={() => {
+                    onSelectTrace(log.traceId!);
+                    onClose();
+                  }}
+                  className="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-[11px] transition-colors"
+                >
+                  Inspect Waterfall Flow
+                </button>
+              </div>
             </div>
           )}
 
@@ -140,7 +179,6 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
                 ) : (
                   log.stackTrace.frames.map((frame, i) => {
                     if (frame.isVendor) {
-                      // Check if preceding or next frame was vendor to avoid repeating fold labels
                       const prevVendor = i > 0 && log.stackTrace!.frames[i - 1].isVendor;
                       if (prevVendor) return null;
                       return (
@@ -163,7 +201,7 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
             </div>
           )}
 
-          {/* Structured Fields & Raw Toggle */}
+          {/* Structured Fields, Raw, and cURL Tabs */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -178,6 +216,7 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
                   <Code2 className="w-3.5 h-3.5" />
                   <span>Structured Fields</span>
                 </button>
+
                 <button
                   onClick={() => setActiveTab('raw')}
                   className={`flex items-center space-x-1.5 px-3 py-1 rounded-md text-xs font-medium transition-colors ${
@@ -189,6 +228,20 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
                   <Terminal className="w-3.5 h-3.5" />
                   <span>Raw Text</span>
                 </button>
+
+                {curlCommand && (
+                  <button
+                    onClick={() => setActiveTab('curl')}
+                    className={`flex items-center space-x-1.5 px-3 py-1 rounded-md text-xs font-medium transition-colors ${
+                      activeTab === 'curl'
+                        ? 'bg-indigo-600 text-white'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    <Play className="w-3.5 h-3.5" />
+                    <span>cURL Replay</span>
+                  </button>
+                )}
               </div>
 
               {activeTab === 'raw' && (
@@ -200,15 +253,38 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
                   <span>{copiedRaw ? 'Copied' : 'Copy'}</span>
                 </button>
               )}
+
+              {activeTab === 'curl' && (
+                <button
+                  onClick={handleCopyCurl}
+                  className="flex items-center space-x-1 text-slate-400 hover:text-slate-200 text-[11px]"
+                >
+                  {copiedCurl ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                  <span>{copiedCurl ? 'Copied' : 'Copy cURL'}</span>
+                </button>
+              )}
             </div>
 
-            {activeTab === 'structured' ? (
+            {activeTab === 'structured' && (
               <div className="p-3 rounded-lg bg-[#090D16] border border-border overflow-x-auto text-[11px] text-slate-300">
                 <pre>{JSON.stringify(log.fields || {}, null, 2)}</pre>
               </div>
-            ) : (
+            )}
+
+            {activeTab === 'raw' && (
               <div className="p-3 rounded-lg bg-[#090D16] border border-border overflow-x-auto text-[11px] text-slate-400 break-all">
                 {log.raw}
+              </div>
+            )}
+
+            {activeTab === 'curl' && curlCommand && (
+              <div className="p-3 rounded-lg bg-[#090D16] border border-indigo-500/30 overflow-x-auto text-[11px] text-indigo-200 space-y-2">
+                <div className="text-[10px] text-slate-500">
+                  Execute this command directly in your terminal to replay this request:
+                </div>
+                <pre className="font-mono text-emerald-400 bg-black/40 p-2.5 rounded border border-border/60 select-all">
+                  {curlCommand}
+                </pre>
               </div>
             )}
           </div>
