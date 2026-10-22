@@ -1,0 +1,36 @@
+# Binaries and build artifacts
+bin/
+dist/
+timberlens
+timberlens.exe
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test artifacts
+*.out
+*.test
+coverage.html
+
+# Node / Web artifacts
+web/node_modules/
+web/dist/
+web/.vite/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and editor files
+.env
+.env.local
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
