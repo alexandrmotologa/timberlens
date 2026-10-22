@@ -218,4 +218,4 @@ timberlens/
 ### Task 11: Visual Assets & Portfolio Sync Phase 2
 - [x] Subtask 11.1: Capture authentic screenshots of both the Terminal TUI and the React 19 Web Studio in action.
 - [x] Subtask 11.2: Generate animated demo GIF (`docs/images/timberlens_demo.gif`) and embed into `README.md`.
-- [ ] Subtask 11.3: Execute `mtlg-portfolio-sync` Phase 2 (copy visual assets, update `project_images_map.json`, update `projects.json` to LIVE, recompile portfolios, preview and broadcast to X).
+- [x] Subtask 11.3: Execute `mtlg-portfolio-sync` Phase 2 (copy visual assets, update `project_images_map.json`, update `projects.json` to LIVE, recompile portfolios, preview and broadcast to X).
