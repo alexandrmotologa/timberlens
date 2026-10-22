@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
           <Cpu className="w-3.5 h-3.5 text-sky-400" />
           <span className="text-slate-400">RAM:</span>
           <span className="font-mono font-medium text-slate-100">
-            {stats ? `${stats.memoryMb.toFixed(1)} MB` : '<25 MB'}
+            {stats ? `${stats.memoryMb.toFixed(1)} MB` : '--'}
           </span>
         </div>
 

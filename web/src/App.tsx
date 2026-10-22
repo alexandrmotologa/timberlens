@@ -106,62 +106,13 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     if (params.get('compare') === 'true') {
       setShowTraceCompare(true);
-      setCompareTraceA(params.get('traceA') || 'trc-b914fd1e');
-      setCompareTraceB(params.get('traceB') || 'trc-c821ea34');
+      if (params.get('traceA')) setCompareTraceA(params.get('traceA')!);
+      if (params.get('traceB')) setCompareTraceB(params.get('traceB')!);
     }
 
-    if (params.get('modal') === 'error' && !selectedLog) {
-      if (logs.length > 0) {
-        const err = logs.find((l) => l.levelStr === 'ERROR' || l.stackTrace);
-        if (err) setSelectedLog(err);
-      } else {
-        setSelectedLog({
-          id: 1042,
-          timestamp: new Date().toISOString(),
-          level: 5,
-          levelStr: 'ERROR',
-          service: 'payment-worker',
-          traceId: 'trc-b914fd1e',
-          spanId: 'spn-4f91a2',
-          message: 'Unhandled database connection refusal during transaction commit',
-          raw: '{"error":"ECONNREFUSED","latency_ms":1250,"level":"ERROR","msg":"Unhandled database connection refusal during transaction commit","retryCount":3,"service":"payment-worker","trace_id":"trc-b914fd1e"}',
-          format: 1,
-          formatStr: 'JSON',
-          fields: {
-            method: 'POST',
-            path: '/v1/checkout/charge',
-            host: 'api.timberlens.local',
-            headers: {
-              'content-type': 'application/json',
-              'x-request-id': 'req-98421a',
-            },
-            body: {
-              amount: 4999,
-              currency: 'USD',
-              customer_id: 'cust_88231',
-            },
-            error: 'ECONNREFUSED',
-            latency_ms: 1250,
-            retryCount: 3,
-          },
-          numeric: { latency_ms: 1250 },
-          stackTrace: {
-            raw: 'Error: connect ECONNREFUSED 10.0.12.44:5432\n    at TCPConnectWrap.afterConnect (node:net:1494:16)\n    at /app/node_modules/pg-pool/index.js:45:11\n    at /app/node_modules/pg/lib/client.js:120:5\n    at DatabasePool.acquire (/app/src/db/pool.ts:48:19)\n    at OrderRepository.createOrder (/app/src/repositories/orders.ts:88:27)\n    at CheckoutHandler.execute (/app/src/handlers/checkout.ts:34:12)',
-            language: 'Node.js',
-            rootCause: 'Error: connect ECONNREFUSED 10.0.12.44:5432',
-            totalFrames: 6,
-            hiddenFrames: 3,
-            frames: [
-              { file: 'node:net', line: 1494, function: 'TCPConnectWrap.afterConnect', isVendor: true, raw: '' },
-              { file: '/app/node_modules/pg-pool/index.js', line: 45, isVendor: true, raw: '' },
-              { file: '/app/node_modules/pg/lib/client.js', line: 120, isVendor: true, raw: '' },
-              { file: '/app/src/db/pool.ts', line: 48, function: 'DatabasePool.acquire', isVendor: false, raw: '' },
-              { file: '/app/src/repositories/orders.ts', line: 88, function: 'OrderRepository.createOrder', isVendor: false, raw: '' },
-              { file: '/app/src/handlers/checkout.ts', line: 34, function: 'CheckoutHandler.execute', isVendor: false, raw: '' },
-            ],
-          },
-        });
-      }
+    if (params.get('modal') === 'error' && !selectedLog && logs.length > 0) {
+      const err = logs.find((l) => l.levelStr === 'ERROR' || l.stackTrace);
+      if (err) setSelectedLog(err);
     }
   }, [logs, selectedLog]);
 
