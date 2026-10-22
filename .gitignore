@@ -1,8 +1,8 @@
 # Binaries and build artifacts
 bin/
 dist/
-timberlens
-timberlens.exe
+/timberlens
+/timberlens.exe
 *.exe
 *.dll
 *.so

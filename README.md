@@ -8,6 +8,8 @@ TimberLens ingests piped streams from `docker compose`, monorepo orchestrators, 
 docker compose logs -f | timberlens
 ```
 
+![TimberLens Demo](docs/images/timberlens_demo.gif)
+
 ---
 
 ## Highlights
@@ -62,6 +64,26 @@ docker compose logs -f | timberlens
                |  (Bubble Tea) |               |  (React 19)   |
                +---------------+               +---------------+
 ```
+
+---
+
+## Interface Tour
+
+### Real-Time Web Studio
+Live virtualized log stream with color-coded service badges, severity indicators, and throughput metrics:
+![TimberLens Dashboard](docs/images/timberlens-1.png)
+
+### Structured Log Inspector & Stack Trace Folding
+Inspect individual log records with formatted JSON, metadata, and collapsed vendor stack trace frames:
+![TimberLens Detail Modal](docs/images/timberlens-2.png)
+
+### Distributed Trace Waterfall
+Correlate and inspect the sequence of microservices processing a single request by trace identifier:
+![TimberLens Trace Waterfall](docs/images/timberlens-3.png)
+
+### Recurring Error Signatures
+Group and prioritize recurring exceptions using normalized fingerprint clustering:
+![TimberLens Error Signatures](docs/images/timberlens-4.png)
 
 ---
 

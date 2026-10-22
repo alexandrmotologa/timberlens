@@ -148,74 +148,74 @@ timberlens/
 ### Task 1: Repository Setup, Metadata, and Portfolio Sync
 - [x] Subtask 1.1: Initialize local git repository, `.gitignore`, and `LICENSE`.
 - [x] Subtask 1.2: Author comprehensive documentation files (`README.md`, `ARCHITECTURE.md`, `QUERY_SYNTAX.md`, `BENCHMARKS.md`) with humanizer discipline.
-- [ ] Subtask 1.3: Create public GitHub repository `alexandrmotologa/timberlens` and apply 8-15 topics across 4 dimensions.
-- [ ] Subtask 1.4: Execute `mtlg-portfolio-sync` Phase 1 (register DEV badge in both portfolio projects.json files, run sync and compare, commit and push).
+- [x] Subtask 1.3: Create public GitHub repository `alexandrmotologa/timberlens` and apply 8-15 topics across 4 dimensions.
+- [x] Subtask 1.4: Execute `mtlg-portfolio-sync` Phase 1 (register DEV badge in both portfolio projects.json files, run sync and compare, commit and push).
 
 ### Task 2: Core Data Models & Low-Memory Interning Engine
-- [ ] Subtask 2.1: Initialize Go module `github.com/alexandrmotologa/timberlens`.
-- [ ] Subtask 2.2: Implement `internal/model/record.go` defining `LogRecord`, `SeverityLevel`, raw payload representation, structured attributes map, and trace context.
-- [ ] Subtask 2.3: Implement `internal/model/intern.go` with thread-safe string interning pool for field names, service names, and common string values to keep memory under 25MB.
-- [ ] Subtask 2.4: Write comprehensive unit tests for `model` and interning efficiency.
+- [x] Subtask 2.1: Initialize Go module `github.com/alexandrmotologa/timberlens`.
+- [x] Subtask 2.2: Implement `internal/model/record.go` defining `LogRecord`, `SeverityLevel`, raw payload representation, structured attributes map, and trace context.
+- [x] Subtask 2.3: Implement `internal/model/intern.go` with thread-safe string interning pool for field names, service names, and common string values to keep memory under 25MB.
+- [x] Subtask 2.4: Write comprehensive unit tests for `model` and interning efficiency.
 
 ### Task 3: Ingestion Subsystem
-- [ ] Subtask 3.1: Implement `internal/ingest/stdin.go` using a reusable byte buffer scanning STDIN continuously without allocation bottlenecks or pipe drops.
-- [ ] Subtask 3.2: Implement `internal/ingest/file.go` with multi-file tailing and rotation detection.
-- [ ] Subtask 3.3: Implement `internal/ingest/syslog.go` for optional UDP/TCP Syslog socket ingestion.
-- [ ] Subtask 3.4: Implement `internal/ingest/otlp.go` for receiving OpenTelemetry HTTP log payloads.
-- [ ] Subtask 3.5: Implement `internal/ingest/generator.go` producing realistic multi-service microservice logs (auth, api, payments, worker, postgres) with traces, errors, and stack traces for testing and demonstration.
-- [ ] Subtask 3.6: Write unit tests verifying ingestion throughput and pipeline handling.
+- [x] Subtask 3.1: Implement `internal/ingest/stdin.go` using a reusable byte buffer scanning STDIN continuously without allocation bottlenecks or pipe drops.
+- [x] Subtask 3.2: Implement `internal/ingest/file.go` with multi-file tailing and rotation detection.
+- [x] Subtask 3.3: Implement `internal/ingest/syslog.go` for optional UDP/TCP Syslog socket ingestion.
+- [x] Subtask 3.4: Implement `internal/ingest/otlp.go` for receiving OpenTelemetry HTTP log payloads.
+- [x] Subtask 3.5: Implement `internal/ingest/generator.go` producing realistic multi-service microservice logs (auth, api, payments, worker, postgres) with traces, errors, and stack traces for testing and demonstration.
+- [x] Subtask 3.6: Write unit tests verifying ingestion throughput and pipeline handling.
 
 ### Task 4: Auto-Detection & Format Parser Engine
-- [ ] Subtask 4.1: Implement `internal/parser/ansi.go` to strip ANSI escape codes while extracting terminal color metadata.
-- [ ] Subtask 4.2: Implement `internal/parser/detector.go` to sniff incoming lines and dispatch to JSON, logfmt, Syslog, or plain text parser.
-- [ ] Subtask 4.3: Implement `internal/parser/json.go` with field alias normalization (levels: `level`, `lvl`, `severity`; messages: `message`, `msg`; timestamps: `time`, `ts`, `@timestamp`; services: `service`, `app`, `name`; trace: `trace_id`, `traceId`, `correlation_id`).
-- [ ] Subtask 4.4: Implement `internal/parser/logfmt.go` with zero-allocation key-value scanner supporting quotes and escaped strings.
-- [ ] Subtask 4.5: Implement `internal/parser/syslog.go` supporting RFC 5424 and RFC 3164 formats.
-- [ ] Subtask 4.6: Write unit tests covering diverse log formats and edge cases.
+- [x] Subtask 4.1: Implement `internal/parser/ansi.go` to strip ANSI escape codes while extracting terminal color metadata.
+- [x] Subtask 4.2: Implement `internal/parser/detector.go` to sniff incoming lines and dispatch to JSON, logfmt, Syslog, or plain text parser.
+- [x] Subtask 4.3: Implement `internal/parser/json.go` with field alias normalization (levels: `level`, `lvl`, `severity`; messages: `message`, `msg`; timestamps: `time`, `ts`, `@timestamp`; services: `service`, `app`, `name`; trace: `trace_id`, `traceId`, `correlation_id`).
+- [x] Subtask 4.4: Implement `internal/parser/logfmt.go` with zero-allocation key-value scanner supporting quotes and escaped strings.
+- [x] Subtask 4.5: Implement `internal/parser/syslog.go` supporting RFC 5424 and RFC 3164 formats.
+- [x] Subtask 4.6: Write unit tests covering diverse log formats and edge cases.
 
 ### Task 5: High-Capacity Lock-Free Ring Buffer & Query Engine
-- [ ] Subtask 5.1: Implement `internal/buffer/ring.go` allocating a contiguous slice of 1,000,000 records with atomic sequence indexing for constant memory usage.
-- [ ] Subtask 5.2: Implement `internal/buffer/index.go` maintaining fast in-memory inverted indices for services, severity levels, and trace IDs.
-- [ ] Subtask 5.3: Implement `internal/buffer/query.go` supporting free-text, field matches (`service:`, `level:`, `trace_id:`), relational comparisons (`level>=warn`, `latency_ms>500`), and boolean combinations.
-- [ ] Subtask 5.4: Write unit and benchmark tests asserting <1.5s ingestion for 500,000 lines and sub-millisecond query evaluation.
+- [x] Subtask 5.1: Implement `internal/buffer/ring.go` allocating a contiguous slice of 1,000,000 records with atomic sequence indexing for constant memory usage.
+- [x] Subtask 5.2: Implement `internal/buffer/index.go` maintaining fast in-memory inverted indices for services, severity levels, and trace IDs.
+- [x] Subtask 5.3: Implement `internal/buffer/query.go` supporting free-text, field matches (`service:`, `level:`, `trace_id:`), relational comparisons (`level>=warn`, `latency_ms>500`), and boolean combinations.
+- [x] Subtask 5.4: Write unit and benchmark tests asserting <1.5s ingestion for 500,000 lines and sub-millisecond query evaluation.
 
 ### Task 6: Stack Trace Cleaning & Error Signature Aggregator
-- [ ] Subtask 6.1: Implement `internal/stacktrace/rules.go` with regex patterns distinguishing user code from library internals in Node.js, Go, Python, and Java.
-- [ ] Subtask 6.2: Implement `internal/stacktrace/cleaner.go` to detect multi-line stack traces, fold library frames, and extract the root cause line.
-- [ ] Subtask 6.3: Implement `internal/cluster/signature.go` to compute deterministic hashes of recurring error messages, tracking occurrence rates and first/last seen timestamps.
-- [ ] Subtask 6.4: Write unit tests for stack trace folding and signature clustering.
+- [x] Subtask 6.1: Implement `internal/stacktrace/rules.go` with regex patterns distinguishing user code from library internals in Node.js, Go, Python, and Java.
+- [x] Subtask 6.2: Implement `internal/stacktrace/cleaner.go` to detect multi-line stack traces, fold library frames, and extract the root cause line.
+- [x] Subtask 6.3: Implement `internal/cluster/signature.go` to compute deterministic hashes of recurring error messages, tracking occurrence rates and first/last seen timestamps.
+- [x] Subtask 6.4: Write unit tests for stack trace folding and signature clustering.
 
 ### Task 7: Charm Bubble Tea Terminal TUI
-- [ ] Subtask 7.1: Implement `internal/tui/styles.go` with Lip Gloss palettes, severity coloring, and deterministic service hash coloring.
-- [ ] Subtask 7.2: Implement `internal/tui/viewport.go` with virtualized log row tailing, auto-follow, and pause controls.
-- [ ] Subtask 7.3: Implement `internal/tui/details.go` providing an interactive modal to inspect structured JSON fields and expanded stack traces.
-- [ ] Subtask 7.4: Implement `internal/tui/app.go` orchestrating keyboard shortcuts (`/`, `f`, `p`, `c`, `Enter`, `1`-`9`, `e`, `q`).
-- [ ] Subtask 7.5: Verify TUI stability and keyboard navigation.
+- [x] Subtask 7.1: Implement `internal/tui/styles.go` with Lip Gloss palettes, severity coloring, and deterministic service hash coloring.
+- [x] Subtask 7.2: Implement `internal/tui/viewport.go` with virtualized log row tailing, auto-follow, and pause controls.
+- [x] Subtask 7.3: Implement `internal/tui/details.go` providing an interactive modal to inspect structured JSON fields and expanded stack traces.
+- [x] Subtask 7.4: Implement `internal/tui/app.go` orchestrating keyboard shortcuts (`/`, `f`, `p`, `c`, `Enter`, `1`-`9`, `e`, `q`).
+- [x] Subtask 7.5: Verify TUI stability and keyboard navigation.
 
 ### Task 8: Embedded HTTP & SSE Server
-- [ ] Subtask 8.1: Implement `internal/server/sse.go` supporting concurrent SSE connections with client buffering and connection cleanup.
-- [ ] Subtask 8.2: Implement `internal/server/api.go` exposing `/api/logs` (paginated querying), `/api/stats` (ingestion rate, memory, service counts), `/api/services`, and `/api/traces/{traceId}`.
-- [ ] Subtask 8.3: Implement `internal/server/embed.go` to serve embedded static files from `web/dist` with fallback to `index.html`.
-- [ ] Subtask 8.4: Write tests for HTTP endpoints and SSE broadcasting.
+- [x] Subtask 8.1: Implement `internal/server/sse.go` supporting concurrent SSE connections with client buffering and connection cleanup.
+- [x] Subtask 8.2: Implement `internal/server/api.go` exposing `/api/logs` (paginated querying), `/api/stats` (ingestion rate, memory, service counts), `/api/services`, and `/api/traces/{traceId}`.
+- [x] Subtask 8.3: Implement `internal/server/embed.go` to serve embedded static files from `web/dist` with fallback to `index.html`.
+- [x] Subtask 8.4: Write tests for HTTP endpoints and SSE broadcasting.
 
 ### Task 9: Modern React 19 Web Studio
-- [ ] Subtask 9.1: Initialize React 19 + TypeScript + Vite + Tailwind CSS project in `web/`.
-- [ ] Subtask 9.2: Implement `useLogStream` hook with auto-reconnecting EventSource, circular ring buffer on client, and query filtering.
-- [ ] Subtask 9.3: Build `Header` component showing live ingestion speed (lines/sec), memory consumption, and connection pill.
-- [ ] Subtask 9.4: Build `ServiceFilterBar` with deterministic color tags, log counts, and toggle filters.
-- [ ] Subtask 9.5: Build `QueryInput` with instant search, syntax hints, and query presets.
-- [ ] Subtask 9.6: Build `LogStreamTable` virtualized table rendering severity badges, service pills, timestamps, messages, and stack trace fold indicators.
-- [ ] Subtask 9.7: Build `TraceWaterfall` drawer rendering distributed request flow across services.
-- [ ] Subtask 9.8: Build `LogDetailModal` with structured JSON explorer and 1-click clipboard copy.
-- [ ] Subtask 9.9: Build `ErrorClusters` card summarizing top recurring exceptions.
-- [ ] Subtask 9.10: Compile production build into `web/dist/` ready for Go embedding.
+- [x] Subtask 9.1: Initialize React 19 + TypeScript + Vite + Tailwind CSS project in `web/`.
+- [x] Subtask 9.2: Implement `useLogStream` hook with auto-reconnecting EventSource, circular ring buffer on client, and query filtering.
+- [x] Subtask 9.3: Build `Header` component showing live ingestion speed (lines/sec), memory consumption, and connection pill.
+- [x] Subtask 9.4: Build `ServiceFilterBar` with deterministic color tags, log counts, and toggle filters.
+- [x] Subtask 9.5: Build `QueryInput` with instant search, syntax hints, and query presets.
+- [x] Subtask 9.6: Build `LogStreamTable` virtualized table rendering severity badges, service pills, timestamps, messages, and stack trace fold indicators.
+- [x] Subtask 9.7: Build `TraceWaterfall` drawer rendering distributed request flow across services.
+- [x] Subtask 9.8: Build `LogDetailModal` with structured JSON explorer and 1-click clipboard copy.
+- [x] Subtask 9.9: Build `ErrorClusters` card summarizing top recurring exceptions.
+- [x] Subtask 9.10: Compile production build into `web/dist/` ready for Go embedding.
 
 ### Task 10: CLI Integration & End-to-End Verification
-- [ ] Subtask 10.1: Assemble `cmd/timberlens/main.go` handling command-line flags (`--web-port`, `--no-tui`, `--buffer-size`, `--file`, `--syslog`, `--otlp`, `demo`).
-- [ ] Subtask 10.2: Verify complete pipeline by running `timberlens demo` and checking both TUI and Web Studio on `http://localhost:9900`.
-- [ ] Subtask 10.3: Execute comprehensive benchmark tests (`go test -bench=. ./...`).
+- [x] Subtask 10.1: Assemble `cmd/timberlens/main.go` handling command-line flags (`--web-port`, `--no-tui`, `--buffer-size`, `--file`, `--syslog`, `--otlp`, `demo`).
+- [x] Subtask 10.2: Verify complete pipeline by running `timberlens demo` and checking both TUI and Web Studio on `http://localhost:9900`.
+- [x] Subtask 10.3: Execute comprehensive benchmark tests (`go test -bench=. ./...`).
 
 ### Task 11: Visual Assets & Portfolio Sync Phase 2
-- [ ] Subtask 11.1: Capture authentic screenshots of both the Terminal TUI and the React 19 Web Studio in action.
-- [ ] Subtask 11.2: Generate animated demo GIF (`docs/images/timberlens_demo.gif`) and embed into `README.md`.
+- [x] Subtask 11.1: Capture authentic screenshots of both the Terminal TUI and the React 19 Web Studio in action.
+- [x] Subtask 11.2: Generate animated demo GIF (`docs/images/timberlens_demo.gif`) and embed into `README.md`.
 - [ ] Subtask 11.3: Execute `mtlg-portfolio-sync` Phase 2 (copy visual assets, update `project_images_map.json`, update `projects.json` to LIVE, recompile portfolios, preview and broadcast to X).
