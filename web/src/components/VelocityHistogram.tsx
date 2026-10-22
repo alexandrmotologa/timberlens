@@ -51,13 +51,13 @@ export const VelocityHistogram: React.FC<VelocityHistogramProps> = ({ onSelectIn
 
   return (
     <div className="relative border-b border-border/70 bg-[#090D16]/95 px-4 py-1.5 flex items-center justify-between select-none">
-      <div className="flex items-center space-x-2 text-[11px] text-slate-400 shrink-0 mr-4">
-        <span className="font-semibold text-slate-300">Traffic Velocity</span>
-        <span className="text-[10px] text-slate-500">(Last 60s)</span>
+      <div className="flex items-center space-x-1.5 sm:space-x-2 text-[10px] sm:text-[11px] text-slate-400 shrink-0 mr-2 sm:mr-4">
+        <span className="font-semibold text-slate-300">Velocity</span>
+        <span className="text-[10px] text-slate-500 hidden sm:inline">(60s)</span>
         {hasSpike && (
-          <span className="inline-flex items-center space-x-1 text-rose-400 bg-rose-500/10 px-1.5 py-0.5 rounded text-[10px] border border-rose-500/20 animate-pulse">
+          <span className="inline-flex items-center space-x-1 text-rose-400 bg-rose-500/10 px-1 sm:px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] border border-rose-500/20 animate-pulse">
             <AlertCircle className="w-3 h-3" />
-            <span>Anomaly Detected</span>
+            <span className="hidden sm:inline">Anomaly</span>
           </span>
         )}
       </div>

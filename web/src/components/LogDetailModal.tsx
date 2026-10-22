@@ -53,18 +53,18 @@ export const LogDetailModal: React.FC<LogDetailModalProps> = ({
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-150">
       <div className="w-full max-w-4xl bg-surface border border-border rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="p-4 border-b border-border flex items-center justify-between bg-surface">
-          <div className="flex items-center space-x-3">
+        <div className="p-3 sm:p-4 border-b border-border flex flex-wrap items-center justify-between gap-2 bg-surface">
+          <div className="flex flex-wrap items-center gap-2">
             <span className={`px-2 py-0.5 rounded text-xs font-mono ${getLevelBadge(log.levelStr)}`}>
               {log.levelStr}
             </span>
             <span className={`px-2.5 py-0.5 rounded font-mono text-xs border font-medium ${svcColor.bg} ${svcColor.text} ${svcColor.border}`}>
               {log.service}
             </span>
-            <span className="text-xs font-mono text-slate-400">
+            <span className="text-xs font-mono text-slate-400 hidden sm:inline">
               {formatFullDate(log.timestamp)}
             </span>
-            <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
+            <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono hidden sm:inline">
               {log.formatStr}
             </span>
           </div>

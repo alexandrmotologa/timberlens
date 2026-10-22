@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- Squircle container clipping path -->
+    <clipPath id="squircle-clip">
+      <rect x="24" y="24" width="976" height="976" rx="220" />
+    </clipPath>
+
+    <!-- Optics Gradients -->
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#00f5ff"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <linearGradient id="amber-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Metallic Obsidian Facet Shading -->
+    <linearGradient id="obsidian-light" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+
+    <linearGradient id="obsidian-mid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <linearGradient id="obsidian-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="obsidian-deep" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#060911"/>
+    </linearGradient>
+
+    <linearGradient id="slate-jaw" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+
+    <!-- Drop Shadow -->
+    <filter id="subtle-shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.14" />
+    </filter>
+  </defs>
+
+  <!-- Luxury White Squircle Container -->
+  <rect x="24" y="24" width="976" height="976" rx="220" fill="#ffffff" stroke="#e2e8f0" stroke-width="6" />
+
+  <g clip-path="url(#squircle-clip)">
+    <g transform="translate(512, 512)" filter="url(#subtle-shadow)">
+
+      <!-- Massive Hexagonal Architectural Gateway -->
+      <polygon points="
+        0,-390
+        338,-195
+        338,195
+        0,390
+        -338,195
+        -338,-195
+      " fill="none" stroke="#0f172a" stroke-width="36" stroke-linejoin="round" />
+
+      <!-- Inner Precision Aperture Pulse Line -->
+      <polygon points="
+        0,-355
+        307,-177
+        307,177
+        0,355
+        -307,177
+        -307,-177
+      " fill="none" stroke="#00f5ff" stroke-width="4" opacity="0.45" stroke-dasharray="16, 12" />
+
+      <!-- ================================================================ -->
+      <!-- THE TIMBER LYNX MASCOT (85% Mass Symmetric Low-Poly Architecture) -->
+      <!-- ================================================================ -->
+
+      <!-- 1. Watertight Base Silhouette (Dark Slate Underlay) -->
+      <path d="
+        M 0 -290
+        L 65 -220
+        L 130 -330
+        L 115 -210
+        L 185 -160
+        L 235 -90
+        L 250 10
+        L 220 90
+        L 250 160
+        L 160 210
+        L 110 320
+        L 0 350
+        L -110 320
+        L -160 210
+        L -250 160
+        L -220 90
+        L -250 10
+        L -235 -90
+        L -185 -160
+        L -115 -210
+        L -130 -330
+        L -65 -220
+        Z
+      " fill="#0b0f19" />
+
+      <!-- 2. Chest & Shoulder Armor Facets -->
+      <polygon points="0,350 110,320 60,240 0,270" fill="url(#obsidian-mid)" />
+      <polygon points="0,350 -110,320 -60,240 0,270" fill="url(#obsidian-dark)" />
+
+      <polygon points="60,240 110,320 160,210 90,170" fill="url(#obsidian-dark)" />
+      <polygon points="-60,240 -110,320 -160,210 -90,170" fill="url(#obsidian-deep)" />
+
+      <polygon points="0,270 60,240 90,170 0,160" fill="url(#obsidian-light)" />
+      <polygon points="0,270 -60,240 -90,170 0,160" fill="url(#obsidian-mid)" />
+
+      <!-- Center Chest Telemetry Core (Hexagonal Lens Node) -->
+      <polygon points="0,185 24,198 24,226 0,240 -24,226 -24,198" fill="url(#cyan-glow)" />
+      <circle cx="0" cy="213" r="5" fill="#ffffff" />
+
+      <!-- 3. Zygomatic Cheek Flares (Authentic Lynx Silhouette) -->
+      <polygon points="160,210 250,160 170,110" fill="url(#obsidian-dark)" />
+      <polygon points="-160,210 -250,160 -170,110" fill="url(#obsidian-deep)" />
+
+      <polygon points="170,110 250,160 220,90" fill="url(#obsidian-light)" />
+      <polygon points="-170,110 -250,160 -220,90" fill="url(#obsidian-mid)" />
+
+      <polygon points="170,110 220,90 250,10 160,20" fill="url(#obsidian-mid)" />
+      <polygon points="-170,110 -220,90 -250,10 -160,20" fill="url(#obsidian-dark)" />
+
+      <polygon points="160,20 250,10 235,-90 145,-50" fill="url(#obsidian-dark)" />
+      <polygon points="-160,20 -250,10 -235,-90 -145,-50" fill="url(#obsidian-deep)" />
+
+      <!-- 4. Lynx Ear Tufts & Crown (High Apex Feathered Horns) -->
+      <!-- Right Ear Shell -->
+      <polygon points="65,-220 130,-330 115,-210" fill="url(#obsidian-deep)" />
+      <polygon points="115,-210 130,-330 95,-170" fill="url(#cyan-glow)" opacity="0.9" />
+      <polygon points="65,-220 95,-170 115,-210" fill="url(#obsidian-light)" />
+      <polygon points="115,-210 185,-160 145,-50 95,-170" fill="url(#obsidian-dark)" />
+
+      <!-- Left Ear Shell -->
+      <polygon points="-65,-220 -130,-330 -115,-210" fill="url(#obsidian-deep)" />
+      <polygon points="-115,-210 -130,-330 -95,-170" fill="url(#cyan-glow)" opacity="0.65" />
+      <polygon points="-65,-220 -95,-170 -115,-210" fill="url(#obsidian-mid)" />
+      <polygon points="-115,-210 -185,-160 -145,-50 -95,-170" fill="url(#obsidian-deep)" />
+
+      <!-- Lynx Ear Tuft Antennas (Fine Tapered Tips) -->
+      <polygon points="130,-330 134,-355 125,-332" fill="#00f5ff" />
+      <polygon points="-130,-330 -134,-355 -125,-332" fill="#00f5ff" />
+
+      <!-- 5. Forehead & Brow Structure -->
+      <polygon points="0,-290 65,-220 0,-180" fill="url(#obsidian-light)" />
+      <polygon points="0,-290 -65,-220 0,-180" fill="url(#obsidian-mid)" />
+
+      <polygon points="0,-180 65,-220 95,-170 45,-120" fill="url(#obsidian-mid)" />
+      <polygon points="0,-180 -65,-220 -95,-170 -45,-120" fill="url(#obsidian-dark)" />
+
+      <polygon points="0,-180 45,-120 0,-90" fill="url(#obsidian-light)" />
+      <polygon points="0,-180 -45,-120 0,-90" fill="url(#obsidian-dark)" />
+
+      <!-- Crown Brow Bridges -->
+      <polygon points="0,-90 45,-120 70,-60 0,-40" fill="url(#obsidian-light)" />
+      <polygon points="0,-90 -45,-120 -70,-60 0,-40" fill="url(#obsidian-mid)" />
+
+      <polygon points="45,-120 95,-170 145,-50 70,-60" fill="url(#obsidian-dark)" />
+      <polygon points="-45,-120 -95,-170 -145,-50 -70,-60" fill="url(#obsidian-deep)" />
+
+      <!-- 6. Predator Optical Lens Eyes (Almond Facets with Electric Cyan Glow) -->
+      <!-- Eye Socket Shading -->
+      <polygon points="35,-55 85,-50 75,-25 35,-35" fill="#060911" />
+      <polygon points="-35,-55 -85,-50 -75,-25 -35,-35" fill="#060911" />
+
+      <!-- Right Eye (Optical Sensor Glow) -->
+      <polygon points="40,-48 80,-45 68,-30 42,-37" fill="url(#cyan-glow)" />
+      <polygon points="56,-47 64,-46 60,-33 54,-34" fill="#ffffff" />
+
+      <!-- Left Eye (Optical Sensor Glow) -->
+      <polygon points="-40,-48 -80,-45 -68,-30 -42,-37" fill="url(#cyan-glow)" />
+      <polygon points="-56,-47 -64,-46 -60,-33 -54,-34" fill="#ffffff" />
+
+      <!-- 7. Snout, Whisker Pads & Muzzle -->
+      <polygon points="0,-40 35,-35 25,25 0,35" fill="url(#obsidian-light)" />
+      <polygon points="0,-40 -35,-35 -25,25 0,35" fill="url(#obsidian-mid)" />
+
+      <polygon points="35,-35 75,-25 90,40 25,25" fill="url(#obsidian-mid)" />
+      <polygon points="-35,-35 -75,-25 -90,40 -25,25" fill="url(#obsidian-dark)" />
+
+      <polygon points="75,-25 160,20 170,110 90,40" fill="url(#obsidian-dark)" />
+      <polygon points="-75,-25 -160,20 -170,110 -90,40" fill="url(#obsidian-deep)" />
+
+      <!-- Nose Keystone -->
+      <polygon points="0,35 20,38 15,60 0,65" fill="#0f172a" />
+      <polygon points="0,35 -20,38 -15,60 0,65" fill="#090d16" />
+
+      <!-- Titanium-Slate Whisker Pads (Horizontal, Anti-Bucktooth Architecture) -->
+      <polygon points="0,65 15,60 45,75 25,115 0,110" fill="url(#slate-jaw)" />
+      <polygon points="0,65 -15,60 -45,75 -25,115 0,110" fill="#64748b" />
+
+      <polygon points="15,60 90,40 105,95 45,75" fill="url(#slate-jaw)" opacity="0.85" />
+      <polygon points="-15,60 -90,40 -105,95 -45,75" fill="#475569" />
+
+      <!-- Chin & Jaw Structure -->
+      <polygon points="0,110 25,115 0,155" fill="url(#obsidian-light)" />
+      <polygon points="0,110 -25,115 0,155" fill="url(#obsidian-mid)" />
+
+      <polygon points="25,115 45,75 105,95 90,170 0,155" fill="url(#obsidian-dark)" />
+      <polygon points="-25,115 -45,75 -105,95 -90,170 0,155" fill="url(#obsidian-deep)" />
+
+      <!-- Subtle Cybernetic Timber Ring Accents (Ring Buffer Metaphor) -->
+      <circle cx="0" cy="0" r="280" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.25" stroke-dasharray="8, 24" />
+      <circle cx="0" cy="0" r="310" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.15" />
+
+    </g>
+  </g>
+</svg>

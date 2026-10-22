@@ -126,20 +126,20 @@ export const LogStreamTable: React.FC<LogStreamTableProps> = ({
           <div
             key={log.id}
             onClick={() => onSelectLog(log)}
-            className="group px-4 py-2 hover:bg-surface/80 flex items-start space-x-3 cursor-pointer transition-colors border-l-2 border-transparent hover:border-sky-500"
+            className="group px-2 sm:px-4 py-2 hover:bg-surface/80 flex items-start space-x-2 sm:space-x-3 cursor-pointer transition-colors border-l-2 border-transparent hover:border-sky-500"
           >
             {/* Timestamp */}
             {columns.timestamp && (
-              <div className="text-slate-500 shrink-0 select-none w-20">
+              <div className="text-slate-500 shrink-0 select-none w-14 sm:w-20 text-[10px] sm:text-xs truncate">
                 {formatTimestamp(log.timestamp)}
               </div>
             )}
 
             {/* Severity Pill */}
             {columns.level && (
-              <div className="shrink-0 w-16">
+              <div className="shrink-0 w-12 sm:w-16">
                 <span
-                  className={`inline-block px-1.5 py-0.5 rounded text-[10px] uppercase font-mono ${levelBadge}`}
+                  className={`inline-block px-1 sm:px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] uppercase font-mono ${levelBadge}`}
                 >
                   {log.levelStr}
                 </span>
@@ -148,9 +148,9 @@ export const LogStreamTable: React.FC<LogStreamTableProps> = ({
 
             {/* Service Name */}
             {columns.service && (
-              <div className="shrink-0 w-28 truncate">
+              <div className="shrink-0 w-20 sm:w-28 truncate">
                 <span
-                  className={`inline-block px-2 py-0.5 rounded text-[11px] truncate max-w-full font-medium border ${svcColor.bg} ${svcColor.text} ${svcColor.border}`}
+                  className={`inline-block px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-[11px] truncate max-w-full font-medium border ${svcColor.bg} ${svcColor.text} ${svcColor.border}`}
                   title={log.service}
                 >
                   {log.service}
@@ -173,7 +173,7 @@ export const LogStreamTable: React.FC<LogStreamTableProps> = ({
                   <span className="font-mono">{log.traceId.slice(0, 8)}</span>
                 </button>
               ) : (
-                <div className="shrink-0 w-14" />
+                <div className="hidden sm:block shrink-0 w-14" />
               )
             )}
 

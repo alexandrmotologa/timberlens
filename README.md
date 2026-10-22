@@ -1,10 +1,28 @@
-# TimberLens
+<p align="center">
+  <img src="docs/images/logo.png?raw=true" alt="TimberLens Logo" width="130" style="border-radius: 28px;" />
+</p>
 
-Fast local structured log aggregator, live search engine, and monorepo stream multiplexer.
+<h1 align="center">TimberLens</h1>
+
+<p align="center">
+  <strong>Fast local structured log aggregator, live search engine, and monorepo stream multiplexer.</strong>
+</p>
+
+<p align="center">
+  <a href="#highlights">Highlights</a> •
+  <a href="#architecture">Architecture</a> •
+  <a href="#interface-tour">Interface Tour</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#query-syntax">Query Syntax</a> •
+  <a href="#terminal-tui-shortcuts">Shortcuts</a>
+</p>
+
+---
 
 TimberLens ingests piped streams from `docker compose`, monorepo orchestrators, and local microservices. It automatically identifies JSON Lines, logfmt, and syslog formats, maintains a circular memory buffer of up to 1,000,000 events, collapses noisy third-party stack traces, and provides both an interactive terminal TUI and an embedded web studio with live Server-Sent Events (SSE).
 
-```
+```bash
 docker compose logs -f | timberlens
 ```
 
@@ -74,20 +92,20 @@ docker compose logs -f | timberlens
 ## Interface Tour
 
 ### Real-Time Web Studio
-Live virtualized log stream with color-coded service badges, severity indicators, and throughput metrics:
+Live virtualized log stream with real-time velocity histogram, color-coded service badges, severity indicators, and customizable columns:
 ![TimberLens Dashboard](docs/images/timberlens-1.png)
 
 ### Structured Log Inspector & Stack Trace Folding
-Inspect individual log records with formatted JSON, metadata, and collapsed vendor stack trace frames:
+Inspect individual log records with formatted JSON, metadata, cURL replay generation, and collapsed vendor stack trace frames:
 ![TimberLens Detail Modal](docs/images/timberlens-2.png)
 
-### Distributed Trace Waterfall
-Correlate and inspect the sequence of microservices processing a single request by trace identifier:
+### Distributed Trace Waterfall & Execution Diff
+Correlate, inspect, and diff the execution timeline and service divergence between distributed traces:
 ![TimberLens Trace Waterfall](docs/images/timberlens-3.png)
 
-### Recurring Error Signatures
-Group and prioritize recurring exceptions using normalized fingerprint clustering:
-![TimberLens Error Signatures](docs/images/timberlens-4.png)
+### Terminal TUI with Side-by-Side Split View
+Terminal TUI with side-by-side Split View, live JSON inspector, Vim match navigation, and mouse wheel support:
+![TimberLens Terminal TUI](docs/images/timberlens-4.png)
 
 ---
 

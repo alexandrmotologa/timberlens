@@ -100,31 +100,31 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Control Actions */}
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-1 sm:space-x-2">
         {/* Trace Comparison */}
         <button
           onClick={onOpenTraceCompare}
-          className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
+          className="flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
           title="Compare two traces side-by-side"
         >
           <GitCompare className="w-3.5 h-3.5 text-indigo-400" />
-          <span className="hidden sm:inline">Trace Diff</span>
+          <span className="hidden md:inline">Trace Diff</span>
         </button>
 
         {/* Error Signatures */}
         <button
           onClick={onOpenClusters}
-          className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
+          className="flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
           title="Inspect recurring error signatures"
         >
           <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-          <span className="hidden sm:inline">Signatures</span>
+          <span className="hidden md:inline">Signatures</span>
         </button>
 
         {/* Offline HTML Snapshot Export */}
         <button
           onClick={onExportSnapshot}
-          className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
+          className="flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 text-xs font-medium border border-border transition-colors"
           title="Export self-contained standalone HTML snapshot"
         >
           <Download className="w-3.5 h-3.5 text-sky-400" />
@@ -140,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Stream Pause / Resume */}
         <button
           onClick={onTogglePause}
-          className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+          className={`flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
             isPaused
               ? 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
               : 'bg-surfaceHover hover:bg-slate-700/60 text-slate-300 hover:text-slate-100 border-border'
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
           className="p-1.5 rounded-lg bg-surfaceHover hover:bg-slate-700/60 text-slate-400 hover:text-slate-200 border border-border transition-colors"
           title="Clear screen buffer"
         >
-          <Trash2 className="w-4 h-4" />
+          <Trash2 className="w-3.5 h-3.5" />
         </button>
       </div>
     </header>
